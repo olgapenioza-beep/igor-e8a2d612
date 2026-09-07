@@ -494,7 +494,7 @@ if(location.hash && location.hash.length>1){
 /** Запрос к серверу в обход запретов браузера. */
 function спросить(параметры){
   return new Promise((готово, сбой)=>{
-    const имя = 'ответ' + Math.random().toString(36).slice(2);
+    const имя = 'cb' + Math.random().toString(36).slice(2);
     const таймер = setTimeout(()=>{ прибрать(); сбой(new Error('сервер не ответил')); }, 25000);
     function прибрать(){ clearTimeout(таймер); delete window[имя]; if(тег.parentNode) тег.remove(); }
     window[имя] = д => { прибрать(); готово(д); };
