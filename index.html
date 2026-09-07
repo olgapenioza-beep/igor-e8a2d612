@@ -158,6 +158,14 @@ tfoot .ostatok-row td:last-child{color:var(--p-orange);font-size:20px}
 .msg.ok{display:block;background:#F1F7ED;color:#3E5A2B}
 .msg.err{display:block;background:#FBEDF1;color:#8E2B4C}
 .load{padding:60px 0;text-align:center;color:var(--p-coffee)}
+.вход{position:fixed;inset:0;background:var(--p-white);display:grid;place-items:center;z-index:50}
+.вход-окно{width:min(420px,calc(100% - 48px));padding:32px;border:2px solid var(--p-orange);border-radius:18px}
+.вход-окно h2{font-family:var(--p-head);font-size:24px;margin:0 0 8px}
+.вход-окно p{color:var(--p-coffee);font-size:14px;margin:0 0 18px}
+.вход-окно input{width:100%;padding:12px 14px;border:2px solid #EDE4D9;border-radius:10px;font:16px var(--p-body);margin-bottom:12px}
+.вход-окно input:focus{outline:none;border-color:var(--p-orange)}
+.вход-окно .go{width:100%}
+.вход-ошибка{margin-top:12px;color:var(--p-berry);font-size:13.5px;min-height:18px}
 .who{color:var(--p-coffee);font-size:12px}
 @media(max-width:900px){.form .body{grid-template-columns:repeat(2,1fr)}.fld.wide{grid-column:span 2}}
 </style>
@@ -173,6 +181,15 @@ tfoot .ostatok-row td:last-child{color:var(--p-orange);font-size:20px}
 
 
 
+<div id="вход" class="вход" style="display:none">
+  <div class="вход-окно">
+    <h2>Комиссионные Игоря</h2>
+    <p>Страница закрыта паролем. Введите его один раз — дальше браузер запомнит.</p>
+    <input type="password" id="пароль" placeholder="пароль" autocomplete="current-password">
+    <button class="go" id="войти">Войти</button>
+    <div class="вход-ошибка" id="вход-ошибка"></div>
+  </div>
+</div>
 <div id="load" class="load">Читаю таблицу…</div>
 <div id="app" style="display:none">
 <section class="headline">
@@ -393,8 +410,7 @@ function отрисовать(){
   document.querySelectorAll('.del').forEach(b=>b.onclick=()=>{
     if(!confirm('Удалить эту запись? Строка исчезнет и у Полины.')) return;
     b.disabled = true;
-    fetch(ЗАПИСЬ + '?drop=' + b.dataset.row, {mode:'no-cors'})
-      .then(()=>new Promise(r=>setTimeout(r,1800)))
+    спросить('drop=' + b.dataset.row + '&pass=' + encodeURIComponent(ПАРОЛЬ))
       .then(загрузка)
       .then(()=>сообщение('Запись удалена.','ok'))
       .catch(e=>{ b.disabled=false; сообщение('Не удалилось: '+e.message,'err'); });
@@ -464,56 +480,64 @@ function сообщение(текст,тип){
 
 // — обмен данными файлом: так вторая половина работы попадает к вам —
 
-const ТАБЛИЦА = '15uLBMJlJ7Ga7lHJUiQFh8kmEZlUVb6BF7hkbr0DYwq4';
-const CSV_URL = 'https://docs.google.com/spreadsheets/d/' + ТАБЛИЦА + '/export?format=csv&gid=0';
-const ЗАПИСЬ = 'https://script.google.com/macros/s/AKfycbyLs9tNFUilGL3UIqRLn8kBQHaWwIbR240Gf88QUG8T-5mflLa_XWeeoqcuWyoTp4HJ/exec';
+const АДРЕС = 'https://script.google.com/macros/s/AKfycbyLs9tNFUilGL3UIqRLn8kBQHaWwIbR240Gf88QUG8T-5mflLa_XWeeoqcuWyoTp4HJ/exec';
+const КЛЮЧ_ПАРОЛЯ = 'igor-pass';
+let ПАРОЛЬ = '';
+try{ ПАРОЛЬ = localStorage.getItem(КЛЮЧ_ПАРОЛЯ) || ''; }catch(e){}
 
-function разбор(текст){
-  const rows=[]; let row=[], cell='', q=false;
-  for(let i=0;i<текст.length;i++){
-    const c=текст[i];
-    if(q){ if(c==='"'){ if(текст[i+1]==='"'){cell+='"';i++;} else q=false; } else cell+=c; }
-    else if(c==='"') q=true;
-    else if(c===','){ row.push(cell); cell=''; }
-    else if(c==='\n'){ row.push(cell); rows.push(row); row=[]; cell=''; }
-    else if(c!=='\r') cell+=c;
-  }
-  if(cell||row.length){ row.push(cell); rows.push(row); }
-  return rows;
+/** Запрос к серверу в обход запретов браузера. */
+function спросить(параметры){
+  return new Promise((готово, сбой)=>{
+    const имя = 'ответ' + Math.random().toString(36).slice(2);
+    const таймер = setTimeout(()=>{ прибрать(); сбой(new Error('сервер не ответил')); }, 25000);
+    function прибрать(){ clearTimeout(таймер); delete window[имя]; if(тег.parentNode) тег.remove(); }
+    window[имя] = д => { прибрать(); готово(д); };
+    const тег = document.createElement('script');
+    тег.src = АДРЕС + '?' + параметры + '&callback=' + имя + '&t=' + Date.now();
+    тег.onerror = () => { прибрать(); сбой(new Error('не удалось связаться с сервером')); };
+    document.head.appendChild(тег);
+  });
+}
+
+function показать_вход(текст){
+  document.getElementById('load').style.display='none';
+  document.getElementById('app').style.display='none';
+  document.getElementById('вход').style.display='grid';
+  document.getElementById('вход-ошибка').textContent = текст || '';
+  const п = document.getElementById('пароль'); п.value=''; п.focus();
 }
 
 async function загрузка(){
-  const шаг = т => { const l=document.getElementById('load'); if(l) l.textContent = т; };
+  const шаг = т => { const l=document.getElementById('load'); if(l){ l.style.display=''; l.textContent=т; } };
+  if(!ПАРОЛЬ){ показать_вход(''); return; }
+  document.getElementById('вход').style.display='none';
+  шаг('Читаю таблицу…');
   try{
-    шаг('Читаю таблицу…');
-    const текст = await (await fetch(CSV_URL + '&t=' + Date.now())).text();
-    const rows = разбор(текст);
-    ДВИЖЕНИЯ = [];
-    rows.forEach((r,i)=>{
-      if(i===0) return;
-      const д=(r[0]||'').trim();
-      if(!д || /^(Суммы|Итого|Налог)/.test(д)) return;
-      ДВИЖЕНИЯ.push({строка:i+1, дата:д, год:ч(r[12])||null, сумма:ч(r[1]), краски:ч(r[2]),
-        шелк:ч(r[4]), usd:ч(r[6]), курс:ч(r[7]), отдано:ч(r[9]), налогТаб:ч(r[10]),
-        заметка:(r[11]||'').trim()});
-    });
+    const д = await спросить('data=1&pass=' + encodeURIComponent(ПАРОЛЬ));
+    if(!д.ок){ ПАРОЛЬ=''; try{localStorage.removeItem(КЛЮЧ_ПАРОЛЯ);}catch(e){} показать_вход('Пароль не подошёл.'); return; }
+    ДВИЖЕНИЯ = д.движения; НАЛОГ_С = д.налогС;
     поле('who').textContent = 'движений: ' + ДВИЖЕНИЯ.length;
     document.getElementById('load').style.display='none';
     document.getElementById('app').style.display='';
     отрисовать(); предпросмотр();
-  }catch(e){ шаг('Таблица не прочиталась: ' + e.message); }
+  }catch(e){ шаг('Не получилось: ' + e.message + '. Обновите страницу.'); }
 }
+
+document.getElementById('войти').onclick = () => {
+  const v = document.getElementById('пароль').value.trim();
+  if(!v) return;
+  ПАРОЛЬ = v;
+  try{ localStorage.setItem(КЛЮЧ_ПАРОЛЯ, v); }catch(e){}
+  загрузка();
+};
+document.getElementById('пароль').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('войти').click(); });
 
 /** Отправить строку в таблицу и дождаться, пока она там появится. */
 async function отправить(строка){
-  await fetch(ЗАПИСЬ + '?write=' + encodeURIComponent(JSON.stringify(строка)), {mode:'no-cors'});
-  const было = ДВИЖЕНИЯ.length;
-  for(let п=0; п<10; п++){
-    await new Promise(r=>setTimeout(r, 1200));
-    await загрузка();
-    if(ДВИЖЕНИЯ.length > было) return true;
-  }
-  return false;
+  const о = await спросить('write=' + encodeURIComponent(JSON.stringify(строка)) + '&pass=' + encodeURIComponent(ПАРОЛЬ));
+  if(о && о.ошибка) throw new Error(о.ошибка);
+  await загрузка();
+  return true;
 }
 
 поле('f-date').value=new Date().toISOString().slice(0,10);
