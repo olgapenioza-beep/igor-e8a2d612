@@ -484,6 +484,12 @@ const АДРЕС = 'https://script.google.com/macros/s/AKfycbyLs9tNFUilGL3UIqRLn
 const КЛЮЧ_ПАРОЛЯ = 'igor-pass';
 let ПАРОЛЬ = '';
 try{ ПАРОЛЬ = localStorage.getItem(КЛЮЧ_ПАРОЛЯ) || ''; }catch(e){}
+// пароль можно передать в самой ссылке: ...#igor2026 — тогда вводить не нужно
+if(location.hash && location.hash.length>1){
+  ПАРОЛЬ = decodeURIComponent(location.hash.slice(1));
+  try{ localStorage.setItem(КЛЮЧ_ПАРОЛЯ, ПАРОЛЬ); }catch(e){}
+  history.replaceState(null,'',location.pathname);
+}
 
 /** Запрос к серверу в обход запретов браузера. */
 function спросить(параметры){
