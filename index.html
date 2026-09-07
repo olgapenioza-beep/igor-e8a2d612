@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<title>Комиссионные Игоря Мельникова</title>
+<meta charset="utf-8">
+<script>
+// любая ошибка страницы должна быть видна, а не оставлять пустой экран
+window.onerror = function(m, src, l, c, e){
+  var d = document.getElementById('load');
+  if(!d){ d = document.createElement('div'); d.id='load'; document.body.insertBefore(d, document.body.firstChild); }
+  d.style.display=''; d.style.color='#C84C78'; d.style.textAlign='left'; d.style.padding='24px'; d.style.font='14px/1.5 Arial';
+  d.textContent = 'Сбой на странице: ' + m + '  (строка ' + l + ':' + c + ')';
+  return true;
+};
+</script>
+<style>
+:root{
+  --p-orange:#ECA154; --p-yellow:#FED141; --p-berry:#C84C78; --p-blue:#6CC5DD;
+  --p-blue-deep:#008DD2; --p-gold:#E59E6D; --p-espresso:#3A2618; --p-coffee:#8A5A3E;
+  --p-white:#FFFFFF; --hair:#C9BCA9;
+  --p-head:"Optima","Helvetica Neue",Arial,sans-serif;
+  --p-body:"Arial","Helvetica Neue",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--p-white);color:var(--p-espresso);font:15px/1.5 var(--p-body)}
+.wrap{width:min(1280px,calc(100% - 48px));margin:0 auto 80px}
+
+/* — шапка с рельсом — */
+header{padding:38px 0 0;position:relative}
+.eyebrow{font:700 11px/1 var(--p-body);letter-spacing:.16em;text-transform:uppercase;color:var(--p-coffee);margin:0 0 10px}
+h1{font-family:var(--p-head);font-weight:700;font-size:clamp(28px,3.2vw,44px);line-height:1.05;margin:0;letter-spacing:-.02em}
+h1 .key{color:var(--p-orange)}
+.sub{color:var(--p-coffee);margin:8px 0 0;font-size:15px}
+.rail{height:4px;background:var(--p-orange);border-radius:4px;margin:22px 0 0;width:75%}
+
+/* — главная цифра — */
+.headline{display:grid;grid-template-columns:minmax(320px,1fr) auto;gap:28px;align-items:end;margin:30px 0 8px;padding-bottom:26px;border-bottom:2px solid var(--hair)}
+.headline .lbl{font:700 12px/1 var(--p-body);letter-spacing:.13em;text-transform:uppercase;color:var(--p-coffee)}
+.headline .big{font-family:var(--p-head);font-weight:700;font-size:clamp(32px,4.2vw,52px);line-height:1.05;color:var(--p-espresso);letter-spacing:-.02em;margin:8px 0 0}
+.headline .big .cur{font-size:.5em;color:var(--p-coffee);margin-left:.14em}
+.headline .note{color:var(--p-coffee);font-size:13px;margin:10px 0 0;max-width:520px}
+.receipt{margin:22px 0 0;border:2px solid var(--p-orange);border-radius:16px;overflow:hidden;max-width:760px}
+.receipt .cap{padding:12px 20px;background:#FDF4EA;border-bottom:2px solid var(--p-orange);
+  font:700 11px/1 var(--p-body);letter-spacing:.13em;text-transform:uppercase;color:var(--p-coffee)}
+.receipt .rows{padding:6px 20px 14px}
+.rrow{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:baseline;padding:10px 0;border-bottom:1px solid #EFE8DE}
+.rrow:last-child{border-bottom:0}
+.rrow .l{font-size:14px}
+.rrow .l small{display:block;color:var(--p-coffee);font-size:12px;margin-top:2px}
+.rrow .r{font-family:var(--p-head);font-weight:700;font-size:18px;white-space:nowrap}
+.rrow.minus .r{color:var(--p-berry)}
+.rrow.total{border-top:2px solid var(--p-orange);border-bottom:0;margin-top:6px;padding-top:14px}
+.rrow.total .l{font-weight:700;font-size:16px}
+.rrow.total .r{font-size:24px;color:var(--p-orange);letter-spacing:-.02em}
+.copy{margin-left:10px;padding:5px 11px;border:2px solid #EDE4D9;border-radius:999px;background:var(--p-white);
+  font:700 11px/1 var(--p-body);color:var(--p-coffee);cursor:pointer;vertical-align:middle}
+.copy:hover{border-color:var(--p-orange)}
+.upd{text-align:right;color:var(--p-coffee);font-size:12px;line-height:1.7}
+.upd b{display:block;font-size:13px;color:var(--p-espresso)}
+.btn{display:inline-block;margin-top:10px;padding:9px 15px;border:2px solid var(--p-orange);border-radius:999px;color:var(--p-espresso);background:var(--p-white);font:700 12px/1 var(--p-body);cursor:pointer}
+.btn:hover{background:#FDF4EA}
+
+/* — плитки — */
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:26px 0 0}
+.tile{padding:18px 18px 16px;border:2px solid #EDE4D9;border-radius:14px}
+.tile.accent{border-color:var(--p-orange)}
+.tile .t{font:700 11px/1.3 var(--p-body);letter-spacing:.1em;text-transform:uppercase;color:var(--p-coffee);min-height:28px}
+.tile .v{font-family:var(--p-head);font-weight:700;font-size:26px;line-height:1.1;margin-top:10px;letter-spacing:-.02em}
+.tile .s{color:var(--p-coffee);font-size:12px;margin-top:6px}
+
+h2{font-family:var(--p-head);font-weight:700;font-size:24px;margin:46px 0 4px;letter-spacing:-.02em}
+h2 .k{color:var(--p-orange)}
+.lead{color:var(--p-coffee);margin:0 0 18px;max-width:760px;font-size:14px}
+
+/* — полосы структуры — */
+.bars{display:grid;gap:14px}
+.bar-row{display:grid;grid-template-columns:190px 1fr 150px;gap:16px;align-items:center}
+.bar-row .name{font-weight:700;font-size:14px}
+.bar-row .name small{display:block;font-weight:400;color:var(--p-coffee);font-size:12px;margin-top:2px}
+.track{height:26px;background:#F6F1EA;border-radius:6px;overflow:hidden}
+.fill{height:100%;border-radius:6px}
+.bar-row .val{text-align:right;font-family:var(--p-head);font-weight:700;font-size:17px}
+.bar-row .val small{display:block;font-family:var(--p-body);font-weight:400;font-size:12px;color:var(--p-coffee)}
+
+/* — таблицы — */
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:right;font:700 11px/1.3 var(--p-body);letter-spacing:.07em;text-transform:uppercase;color:var(--p-coffee);padding:9px 10px;border-bottom:2px solid var(--hair);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td{padding:9px 10px;border-bottom:1px solid #EFE8DE;text-align:right;white-space:nowrap}
+tbody tr:hover{background:#FDF9F4}
+td.mut{color:var(--p-coffee)}
+tfoot td{font-weight:700;border-top:2px solid var(--hair);border-bottom:0;padding-top:12px}
+.year-head td{background:#FDF4EA;font-family:var(--p-head);font-weight:700;font-size:15px;text-align:left;border-bottom:2px solid var(--p-orange)}
+.scroll{overflow-x:auto;border:2px solid #EDE4D9;border-radius:14px;padding:6px 14px 14px}
+.scroll.tall{max-height:78vh;overflow:auto;padding:0 14px;overscroll-behavior:contain}
+/* шапка колонок едет вместе с прокруткой — названия видны на любой строке */
+.tall thead th{position:sticky;top:0;z-index:3;background:var(--p-white);
+  box-shadow:inset 0 -2px 0 var(--hair);border-bottom:0;padding-top:14px}
+.tall thead th:first-child{z-index:5}
+/* дата остаётся слева при горизонтальной прокрутке */
+.tall td:first-child,.tall th:first-child{position:sticky;left:0;z-index:2;background:var(--p-white)}
+tr.my td{background:#FFFCF6}
+tr.my td:first-child{box-shadow:inset 3px 0 0 var(--p-orange)}
+.del{margin-left:6px;padding:0 6px;border:0;border-radius:6px;background:#F3E7DA;color:var(--p-coffee);
+  font:700 13px/1.4 var(--p-body);cursor:pointer}
+.del:hover{background:var(--p-berry);color:#fff}
+.tall tbody tr:hover td:first-child{background:#FDF9F4}
+.tall .year-head td{position:sticky;top:38px;z-index:4;background:#FDF4EA}
+/* итоги держатся внизу */
+.tall tfoot td{position:sticky;bottom:0;z-index:4;background:var(--p-white);
+  box-shadow:inset 0 2px 0 var(--hair);border-top:0}
+.tall tfoot td:first-child{z-index:5}
+tfoot .ostatok-row td{background:#FDF4EA;border-top:2px solid var(--p-orange);
+  font-family:var(--p-head);font-size:17px;padding-top:12px;padding-bottom:12px}
+tfoot .ostatok-row td:last-child{color:var(--p-orange);font-size:20px}
+
+/* — нестыковки — */
+.flags{display:grid;gap:12px}
+.flag{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start;padding:16px 18px;border:2px solid #EDE4D9;border-radius:14px}
+.flag.warn{border-color:var(--p-berry)}
+.flag.info{border-color:var(--p-blue)}
+.dot{width:11px;height:11px;border-radius:50%;margin-top:5px}
+.flag.warn .dot{background:var(--p-berry)} .flag.info .dot{background:var(--p-blue)}
+.flag b{display:block;font-size:15px;margin-bottom:4px}
+.flag p{margin:0;color:var(--p-coffee);font-size:13.5px}
+.flag .amt{font-family:var(--p-head);font-weight:700;font-size:19px;white-space:nowrap}
+.flag ul{margin:8px 0 0;padding-left:18px;color:var(--p-coffee);font-size:13px}
+
+.foot{margin-top:56px;padding-top:20px;border-top:2px solid var(--hair);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;color:var(--p-coffee);font-size:12.5px}
+.foot code{background:#F6F1EA;padding:2px 6px;border-radius:4px;font-size:12px}
+.foot img{width:150px;opacity:.92}
+@media(max-width:1000px){.tiles{grid-template-columns:repeat(2,1fr)}.headline{grid-template-columns:1fr}.upd{text-align:left}.bar-row{grid-template-columns:1fr;gap:6px}.bar-row .val{text-align:left}}
+
+/* — форма ввода — */
+.form{margin:18px 0 0;border:2px solid #EDE4D9;border-radius:16px;overflow:hidden}
+.form .cap{padding:13px 20px;background:#FDF4EA;border-bottom:2px solid #EDE4D9;
+  font:700 11px/1 var(--p-body);letter-spacing:.13em;text-transform:uppercase;color:var(--p-coffee)}
+.form .body{padding:18px 20px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px 16px}
+.fld{display:flex;flex-direction:column;gap:5px;min-width:0}
+.fld label{font:700 11px/1.3 var(--p-body);letter-spacing:.07em;text-transform:uppercase;color:var(--p-coffee)}
+.fld label span{display:block;font-weight:400;letter-spacing:0;text-transform:none;font-size:11.5px;color:#9A8878;margin-top:1px}
+.fld input{padding:10px 12px;border:2px solid #EDE4D9;border-radius:9px;font:15px var(--p-body);
+  color:var(--p-espresso);background:var(--p-white);width:100%}
+.fld input:focus{outline:none;border-color:var(--p-orange)}
+.fld.wide{grid-column:span 2}
+.form .foot{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  padding-top:14px;border-top:1px solid #EFE8DE;margin-top:2px}
+.go{padding:12px 22px;border:0;border-radius:999px;background:var(--p-orange);color:#fff;
+  font:700 14px/1 var(--p-body);cursor:pointer}
+.go:hover{background:#E08F3C}
+.go:disabled{background:#DCCDBD;cursor:default}
+.ghost{padding:10px 16px;border:2px solid #EDE4D9;border-radius:999px;background:var(--p-white);
+  font:700 12px/1 var(--p-body);color:var(--p-coffee);cursor:pointer}
+.ghost:hover{border-color:var(--p-orange)}
+.pre{flex:1;min-width:240px;color:var(--p-coffee);font-size:13px}
+.pre b{color:var(--p-espresso)}
+.msg{grid-column:1/-1;padding:12px 14px;border-radius:10px;font-size:13.5px;display:none}
+.msg.ok{display:block;background:#F1F7ED;color:#3E5A2B}
+.msg.err{display:block;background:#FBEDF1;color:#8E2B4C}
+.load{padding:60px 0;text-align:center;color:var(--p-coffee)}
+.who{color:var(--p-coffee);font-size:12px}
+@media(max-width:900px){.form .body{grid-template-columns:repeat(2,1fr)}.fld.wide{grid-column:span 2}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Расчёт комиссионных</p>
+  <h1>Игорь <span class="key">Мельников</span></h1>
+  <p class="sub">10% с красок · 20% с шелкографии и форм · переводы PayPal по курсу на дату · налог 18% с 20.01.2026</p>
+  <div class="rail"></div>
+</header>
+
+
+
+<div id="load" class="load">Читаю таблицу…</div>
+<div id="app" style="display:none">
+<section class="headline">
+  <div>
+    <div class="lbl">К выплате Игорю</div>
+    <div class="big" id="ostatok">—<span class="cur">₽</span></div>
+    <div class="receipt"><div class="cap" id="rcap">расчёт</div><div class="rows" id="rrows"></div></div>
+  </div>
+  <div class="upd">
+    <b id="upd-date">—</b>
+    общая с Полиной<br>
+    <span class="who" id="who"></span>
+    <button class="btn" id="reload">Обновить</button>
+  </div>
+</section>
+
+<h2>Новое <span class="k">движение</span></h2>
+<p class="lead">Заносите сюда — проценты и налог посчитаются сами. Запись сразу видна обеим.</p>
+<div class="form">
+  <div class="cap">Записать движение денег</div>
+  <div class="body">
+    <div class="fld"><label>Дата<span>движения денег</span></label><input type="date" id="f-date"></div>
+    <div class="fld"><label>Сумма на счёт<span>с доставкой</span></label><input type="text" id="f-summa" inputmode="decimal" placeholder="0"></div>
+    <div class="fld"><label>Краски<span>из этой суммы, 10% Игорю</span></label><input type="text" id="f-kraski" inputmode="decimal" placeholder="0"></div>
+    <div class="fld"><label>Шелкография и формы<span>20% Игорю</span></label><input type="text" id="f-shelk" inputmode="decimal" placeholder="0"></div>
+    <div class="fld"><label>PayPal, $<span>перевод для него</span></label><input type="text" id="f-usd" inputmode="decimal" placeholder="0"></div>
+    <div class="fld"><label>Курс<span>рублей за доллар</span></label><input type="text" id="f-rate" inputmode="decimal" placeholder="0"></div>
+    <div class="fld"><label>Отдали<span>выплата Игорю</span></label><input type="text" id="f-otdali" inputmode="decimal" placeholder="0"></div>
+    <div class="fld"><label>Заметка<span>необязательно</span></label><input type="text" id="f-note" placeholder=""></div>
+    <div class="foot">
+      <button class="go" id="send">Записать</button>
+      <button class="ghost" id="cbr">Курс ЦБ на дату</button>
+      <div class="pre" id="preview"></div>
+    </div>
+    <div class="msg" id="msg"></div>
+  </div>
+</div>
+
+<div class="tiles" id="tiles"></div>
+
+<h2>Из чего <span class="k">сложилось</span> начисление</h2>
+<p class="lead">Три источника комиссии за всё время работы.</p>
+<div class="bars" id="struct"></div>
+
+<h2>По <span class="k">годам</span></h2>
+<p class="lead">У старых строк год восстановлен по порядку записей и сверен с курсом ЦБ на дату перевода.</p>
+<div class="scroll"><table id="years"></table></div>
+
+<h2>Что <span class="k">проверить</span></h2>
+<p class="lead">Расхождения между тем, что в таблице, и тем, что даёт расчёт.</p>
+<div class="flags" id="flags"></div>
+
+<h2>Все <span class="k">движения</span></h2>
+<p class="lead">Серым — то, что заносите руками; тёмным — то, что считается.</p>
+<div class="scroll tall"><table id="moves"></table></div>
+
+<div class="foot">
+  <div>Данные лежат в общей таблице. Что внесла одна — сразу видит вторая.</div>
+</div>
+</div>
+</div>
+
+<script>
+const СТАВКА = 0.18;
+let НАЛОГ_С = '2026-01-20', ДВИЖЕНИЯ = [], КТО = '';
+
+const skl=(n,a,b,c)=>{const d=n%100,e=n%10; return n+' '+(d>4&&d<21?c:e===1?a:e>1&&e<5?b:c);};
+const fmt=(v,d=2)=>(Math.abs(v)<0.005?0:v).toLocaleString('ru-RU',{minimumFractionDigits:d,maximumFractionDigits:d});
+const f0=v=>(Math.abs(v)<0.5?0:v).toLocaleString('ru-RU',{maximumFractionDigits:0});
+const ч=s=>{const v=parseFloat(String(s||'').replace(/\s/g,'').replace(',','.'));return isFinite(v)?v:0;};
+const ru=d=>d?d.split('-').reverse().join('.'):'—';
+/** Текущий итог со знаком: «+» — отдано сверх начисленного, «−» — ещё должны. */
+const сЗнаком=v=>(Math.abs(v)<0.005?'':(v<0?'+':'−'))+' '+fmt(Math.abs(v));
+
+// ——— расчёт строки ———
+function посчитать(д){
+  const r = Object.assign({}, д);
+  const m = String(r.дата||'').match(/^(\d{1,2})[.,](\d{1,2})$/);
+  r.день = m?+m[1]:null; r.месяц = m?+m[2]:null;
+  r.date = (r.год && r.день && r.месяц)
+    ? r.год+'-'+String(r.месяц).padStart(2,'0')+'-'+String(r.день).padStart(2,'0') : null;
+  r.k10 = r.краски*0.10;
+  r.s20 = r.шелк*0.20;
+  r.rub = r.usd*r.курс;
+  r.nach = r.k10+r.s20+r.rub;
+  r.taxed = !!(r.date && r.date >= НАЛОГ_С);
+  r.tax = r.taxed ? r.nach*СТАВКА : 0;
+  r.dolg = r.nach - r.tax;
+  return r;
+}
+
+function отрисовать(){
+  const recs = ДВИЖЕНИЯ.map(посчитать);
+  const S=k=>recs.reduce((a,r)=>a+r[k],0);
+  const tot={краски:S('краски'),k10:S('k10'),шелк:S('шелк'),s20:S('s20'),usd:S('usd'),
+             rub:S('rub'),nach:S('nach'),tax:S('tax'),dolg:S('dolg'),отдано:S('отдано')};
+  tot.ostatok = tot.dolg - tot.отдано;
+
+  // период с последней выплаты
+  const paid = recs.filter(r=>r.отдано>0&&r.date).map(r=>r.date).sort();
+  const lastPay = paid[paid.length-1]||null, lastPayDate = ru(lastPay);
+  const taxRows = recs.filter(r=>r.налогТаб>0&&r.date).map(r=>r.date).sort();
+  const lastTaxDate = ru(taxRows[taxRows.length-1]);
+  const since = recs.filter(r=>r.date && lastPay && r.date > lastPay);
+  const s = {nach:since.reduce((a,r)=>a+r.nach,0), tax:since.reduce((a,r)=>a+r.tax,0),
+             dolg:since.reduce((a,r)=>a+r.dolg,0), n:since.filter(r=>r.nach>0).length};
+  const days = lastPay ? Math.round((Date.now()-new Date(lastPay))/864e5) : 0;
+
+  const переплата = tot.ostatok < -0.005;
+  document.querySelector('.headline .lbl').textContent = переплата ? 'Переплачено Игорю' : 'К выплате Игорю';
+  document.getElementById('ostatok').innerHTML = сЗнаком(tot.ostatok)+'<span class="cur">₽</span>';
+  document.getElementById('rcap').textContent = lastPay
+    ? 'Расчёт за период с последней выплаты '+lastPayDate+' — '+skl(days,'день','дня','дней')+' назад' : 'Расчёт';
+  const tail = tot.ostatok - s.dolg;
+  const rr = [
+    ['Поступило за период', skl(s.n,'движение','движения','движений')+': краски, шелкография, PayPal', s.nach, ''],
+    ['Налог 18%', 'с каждого поступления', -s.tax, 'minus'],
+    ['К выплате за период', '', s.dolg, ''],
+  ];
+  if(Math.abs(tail)>=0.5) rr.push([tail>0?'Осталось с прошлых периодов':'Отдано сверх начисленного',
+      tail>0?'не закрыто предыдущими выплатами':'выплата больше, чем накопилось',
+      Math.abs(tail), tail<0?'minus':'']);
+  rr.push([переплата ? 'Итого переплачено' : 'Итого к выплате',
+           переплата ? 'на эту сумму Игорь уже получил вперёд' : '', tot.ostatok, 'total', 'знак']);
+  document.getElementById('rrows').innerHTML = rr.map(([l,sub,v,c,знак])=>
+    '<div class="rrow '+c+'"><div class="l">'+l+(sub?'<small>'+sub+'</small>':'')+'</div>'+
+    '<div class="r">'+(знак ? сЗнаком(v) : (v<0?'− ':'')+fmt(Math.abs(v)))+' ₽</div></div>').join('');
+
+  document.getElementById('tiles').innerHTML = [
+    ['Начислено всего','',tot.nach,recs.filter(r=>r.nach>0).length+' движений с комиссией',''],
+    ['Налог 18%','',tot.tax,'с '+ru(НАЛОГ_С)+', когда его начали считать',''],
+    ['Начислено за вычетом налога','',tot.dolg,'за всё время работы',''],
+    ['Уже отдано','',tot.отдано,recs.filter(r=>r.отдано>0).length+' выплат',''],
+    [переплата?'Переплачено':'К выплате сейчас','',tot.ostatok,переплата?'отдано вперёд':'на сегодня','accent','знак'],
+  ].map(([t,k,v,sub,cls,знак])=>'<div class="tile '+cls+'"><div class="t">'+t+'</div><div class="v"'+
+    (cls?' style="color:var(--p-orange)"':'')+'>'+
+    (знак ? (Math.abs(v)<0.5?'':(v<0?'+':'−'))+' '+f0(Math.abs(v)) : f0(v))+' ₽</div>'+
+    '<div class="s">'+sub+'</div></div>').join('');
+
+  const struct=[['Шелкография и формы','20% от '+f0(tot.шелк)+' ₽',tot.s20,'var(--p-orange)'],
+                ['Краски','10% от '+f0(tot.краски)+' ₽',tot.k10,'var(--p-gold)'],
+                ['Переводы PayPal','$'+fmt(tot.usd)+' по курсу из таблицы',tot.rub,'var(--p-blue)']];
+  const mx=Math.max.apply(null,struct.map(x=>x[2]))||1;
+  document.getElementById('struct').innerHTML = struct.map(([n,sub,v,c])=>
+    '<div class="bar-row"><div class="name">'+n+'<small>'+sub+'</small></div>'+
+    '<div class="track"><div class="fill" style="width:'+(v/mx*100)+'%;background:'+c+'"></div></div>'+
+    '<div class="val">'+f0(v)+' ₽<small>'+(tot.nach?(v/tot.nach*100).toFixed(1):0)+'% начисления</small></div></div>').join('');
+
+  const byY={};
+  recs.forEach(r=>{const y=r.год||'без года'; byY[y]=byY[y]||{nach:0,tax:0,dolg:0,отдано:0,n:0};
+    byY[y].nach+=r.nach; byY[y].tax+=r.tax; byY[y].dolg+=r.dolg; byY[y].отдано+=r.отдано;
+    if(r.nach>0||r.отдано>0) byY[y].n++;});
+  document.getElementById('years').innerHTML =
+    '<thead><tr><th>Год</th><th>Движений</th><th>Начислено</th><th>Налог 18%</th><th>Начислено за вычетом налога</th><th>Отдано</th><th>Разница за год</th></tr></thead><tbody>'
+    + Object.keys(byY).sort().map(y=>{const v=byY[y];return '<tr><td><b>'+y+'</b></td><td class="mut">'+v.n+
+      '</td><td>'+fmt(v.nach)+'</td><td class="mut">'+(v.tax?fmt(v.tax):'—')+'</td><td>'+fmt(v.dolg)+
+      '</td><td class="mut">'+(v.отдано?fmt(v.отдано):'—')+'</td><td style="color:'+
+      (v.dolg-v.отдано>0?'var(--p-berry)':'var(--p-coffee)')+'">'+fmt(v.dolg-v.отдано)+'</td></tr>';}).join('')
+    + '</tbody><tfoot><tr><td>Всего за все годы</td><td>'+recs.length+'</td><td>'+fmt(tot.nach)+'</td><td>'+fmt(tot.tax)+
+      '</td><td>'+fmt(tot.dolg)+'</td><td>'+fmt(tot.отдано)+'</td><td style="color:var(--p-orange)">'+сЗнаком(tot.ostatok)+'</td></tr></tfoot>';
+
+  const flags=[];
+  const miss = recs.filter(r=>r.taxed&&r.nach>0&&r.налогТаб===0);
+  if(miss.length) flags.push(['warn','Налог за последний период — досчитан здесь',
+    'Пока выплат не было, налог не считали: последний посчитан '+lastTaxDate+
+    ', а последняя выплата — '+lastPayDate+'. Здесь он посчитан на все поступления периода — '+
+    skl(miss.length,'строка','строки','строк')+'.',
+    fmt(miss.reduce((a,r)=>a+r.tax,0))+' ₽',
+    miss.map(r=>r.дата+'.'+r.год+' — поступило '+f0(r.nach)+' ₽, налог '+fmt(r.tax)+' ₽')]);
+  const свои = recs.filter(r=>r.откуда==='дашборд');
+  if(свои.length) flags.push(['info','Ваши записи из дашборда',
+    'Их нет в Google-таблице — они хранятся здесь и участвуют в расчёте. Полина видит в таблице только свои строки.','',
+    свои.map(r=>r.дата+'.'+r.год+' — '+(r.отдано?'отдано '+f0(r.отдано)+' ₽':'начислено '+f0(r.краски*0.1+r.шелк*0.2+r.usd*r.курс)+' ₽'))]);
+
+  const noY = recs.filter(r=>!r.год);
+  if(noY.length) flags.push(['warn','Строки без года',
+    'У строки нет года — она не попадает в разбивку по годам и в расчёт налога.','',
+    noY.map(r=>'строка '+r.строка+': «'+r.дата+'»')]);
+  const noted = recs.filter(r=>r.заметка);
+  if(noted.length) flags.push(['info','Помечены на проверку',
+    'Расчёт сделан, но суммы стоит проверить.','',
+    noted.map(r=>r.дата+'.'+(r.год||'—')+' — '+r.заметка)]);
+  const noDate = recs.filter(r=>!r.date&&(r.nach>0||r.отдано>0));
+  if(noDate.length) flags.push(['info','Строки без даты',
+    'В первой колонке нет числа — по ним не считается налог.','',
+    noDate.map(r=>'«'+(r.дата||'пусто')+'» — отдано '+f0(r.отдано)+' ₽')]);
+  document.getElementById('flags').innerHTML = flags.map(([c,t,p,a,list])=>
+    '<div class="flag '+c+'"><div class="dot"></div><div><b>'+t+'</b><p>'+p+'</p>'+
+    (list&&list.length?'<ul>'+list.map(x=>'<li>'+x+'</li>').join('')+'</ul>':'')+'</div>'+
+    '<div class="amt">'+a+'</div></div>').join('') || '<p class="lead">Расхождений нет.</p>';
+
+  let html='<thead><tr><th>Дата</th><th>На счёт</th><th>Краски</th><th>10%</th><th>Шелкография</th><th>20%</th>'+
+    '<th>PayPal $</th><th>Курс</th><th>В рублях</th><th>Начислено</th><th>Налог 18%</th><th>Начислено за вычетом налога</th><th>Отдано</th></tr></thead><tbody>';
+  let curY=null, свойНомер=0;
+  recs.forEach(r=>{
+    const y=r.год||'без года';
+    if(y!==curY){curY=y; html+='<tr class="year-head"><td colspan="13">'+curY+'</td></tr>';}
+    const z=v=>v?fmt(v):'<span class="mut">—</span>';
+    const моя = r.откуда==='дашборд';
+    r._свой = свойНомер++;
+    html+='<tr'+(моя?' class="my"':'')+'><td>'+(r.дата||'<span class="mut">без даты</span>')+
+      ' <button class="del" data-row="'+r.строка+'" title="Удалить запись">×</button>'+
+      '</td><td class="mut">'+z(r.сумма)+
+      '</td><td class="mut">'+z(r.краски)+'</td><td>'+z(r.k10)+'</td><td class="mut">'+z(r.шелк)+
+      '</td><td>'+z(r.s20)+'</td><td class="mut">'+z(r.usd)+'</td><td class="mut">'+z(r.курс)+
+      '</td><td>'+z(r.rub)+'</td><td><b>'+z(r.nach)+'</b></td><td'+
+      (r.taxed&&r.nach>0&&!r.налогТаб?' style="color:var(--p-berry)"':'')+'>'+z(r.tax)+
+      '</td><td><b>'+z(r.dolg)+'</b></td><td class="mut">'+z(r.отдано)+'</td></tr>';
+  });
+  html+='</tbody><tfoot><tr><td>Всего за все годы</td><td>—</td><td>'+fmt(tot.краски)+'</td><td>'+fmt(tot.k10)+
+    '</td><td>'+fmt(tot.шелк)+'</td><td>'+fmt(tot.s20)+'</td><td>'+fmt(tot.usd)+'</td><td>—</td><td>'+
+    fmt(tot.rub)+'</td><td>'+fmt(tot.nach)+'</td><td>'+fmt(tot.tax)+'</td><td>'+fmt(tot.dolg)+
+    '</td><td>'+fmt(tot.отдано)+'</td></tr>'+
+    '<tr class="ostatok-row"><td colspan="11">'+(переплата?'Переплачено — отдано вперёд':'Осталось отдать')+
+    ' — то же, что в заголовке</td>'+
+    '<td colspan="2">'+сЗнаком(tot.ostatok)+' ₽</td></tr></tfoot>';
+  document.getElementById('moves').innerHTML = html;
+  document.querySelectorAll('.del').forEach(b=>b.onclick=()=>{
+    if(!confirm('Удалить эту запись? Строка исчезнет и у Полины.')) return;
+    b.disabled = true;
+    fetch(ЗАПИСЬ + '?drop=' + b.dataset.row, {mode:'no-cors'})
+      .then(()=>new Promise(r=>setTimeout(r,1800)))
+      .then(загрузка)
+      .then(()=>сообщение('Запись удалена.','ok'))
+      .catch(e=>{ b.disabled=false; сообщение('Не удалилось: '+e.message,'err'); });
+  });
+
+  document.getElementById('upd-date').textContent =
+    new Date().toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  document.getElementById('load').style.display='none';
+  document.getElementById('app').style.display='';
+}
+
+// ——— форма ———
+const поле=id=>document.getElementById(id);
+function собрать(){
+  const д={дата:поле('f-date').value, сумма:ч(поле('f-summa').value), краски:ч(поле('f-kraski').value),
+           шелк:ч(поле('f-shelk').value), usd:ч(поле('f-usd').value), курс:ч(поле('f-rate').value),
+           отдано:ч(поле('f-otdali').value), заметка:поле('f-note').value.trim()};
+  д.краски10 = д.краски*0.10;
+  д.шелк20 = д.шелк*0.20;
+  д.рубли = д.usd*д.курс;
+  д.начислено = д.краски10 + д.шелк20 + д.рубли;
+  д.налог = (д.дата && д.дата >= НАЛОГ_С) ? д.начислено*СТАВКА : 0;
+  return д;
+}
+function предпросмотр(){
+  const д=собрать();
+  поле('preview').innerHTML = д.начислено||д.отдано
+    ? 'Запишется: начислено <b>'+fmt(д.начислено)+' ₽</b>'+(д.налог?', налог <b>'+fmt(д.налог)+' ₽</b>':'')+
+      (д.начислено?', к выдаче <b>'+fmt(д.начислено-д.налог)+' ₽</b>':'')+
+      (д.отдано?' · отдано <b>'+fmt(д.отдано)+' ₽</b>':'')
+    : 'Заполните поля — здесь появится, что запишется.';
+}
+['f-date','f-summa','f-kraski','f-shelk','f-usd','f-rate','f-otdali'].forEach(id=>
+  поле(id).addEventListener('input',предпросмотр));
+
+function сообщение(текст,тип){
+  const m=поле('msg'); m.className='msg '+тип; m.textContent=текст;
+  if(тип==='ok') setTimeout(()=>{m.className='msg';},6000);
+}
+
+поле('send').onclick=()=>{
+  const д=собрать();
+  if(!д.дата) return сообщение('Укажите дату движения денег.','err');
+  if(!д.начислено && !д.отдано) return сообщение('Пустая строка: заполните хотя бы одну сумму.','err');
+  поле('send').disabled=true; поле('send').textContent='Записываю…';
+  сообщение('Записываю в таблицу…','ok');
+  отправить(д).then(ок=>{
+    поле('send').disabled=false; поле('send').textContent='Записать';
+    if(ок){
+      ['f-summa','f-kraski','f-shelk','f-usd','f-rate','f-otdali','f-note'].forEach(id=>поле(id).value='');
+      предпросмотр();
+      сообщение('Записано: '+ru(д.дата)+'. Полина видит это сразу.','ok');
+    } else сообщение('Таблица пока не показывает новую строку. Нажмите «Обновить» через минуту.','err');
+  }).catch(e=>{
+    поле('send').disabled=false; поле('send').textContent='Записать';
+    сообщение('Не записалось: '+e.message,'err');
+  });
+};
+
+поле('cbr').onclick=()=>{
+  const д=поле('f-date').value;
+  if(!д) return сообщение('Сначала укажите дату — курс берётся на неё.','err');
+  window.open('https://www.cbr.ru/currency_base/daily/','_blank');
+};
+
+поле('reload').onclick=()=>{поле('reload').textContent='Обновляю…'; загрузка().then(()=>поле('reload').textContent='Обновить');};
+
+// — обмен данными файлом: так вторая половина работы попадает к вам —
+
+const ТАБЛИЦА = '15uLBMJlJ7Ga7lHJUiQFh8kmEZlUVb6BF7hkbr0DYwq4';
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/' + ТАБЛИЦА + '/export?format=csv&gid=0';
+const ЗАПИСЬ = 'https://script.google.com/macros/s/AKfycbyLs9tNFUilGL3UIqRLn8kBQHaWwIbR240Gf88QUG8T-5mflLa_XWeeoqcuWyoTp4HJ/exec';
+
+function разбор(текст){
+  const rows=[]; let row=[], cell='', q=false;
+  for(let i=0;i<текст.length;i++){
+    const c=текст[i];
+    if(q){ if(c==='"'){ if(текст[i+1]==='"'){cell+='"';i++;} else q=false; } else cell+=c; }
+    else if(c==='"') q=true;
+    else if(c===','){ row.push(cell); cell=''; }
+    else if(c==='\n'){ row.push(cell); rows.push(row); row=[]; cell=''; }
+    else if(c!=='\r') cell+=c;
+  }
+  if(cell||row.length){ row.push(cell); rows.push(row); }
+  return rows;
+}
+
+async function загрузка(){
+  const шаг = т => { const l=document.getElementById('load'); if(l) l.textContent = т; };
+  try{
+    шаг('Читаю таблицу…');
+    const текст = await (await fetch(CSV_URL + '&t=' + Date.now())).text();
+    const rows = разбор(текст);
+    ДВИЖЕНИЯ = [];
+    rows.forEach((r,i)=>{
+      if(i===0) return;
+      const д=(r[0]||'').trim();
+      if(!д || /^(Суммы|Итого|Налог)/.test(д)) return;
+      ДВИЖЕНИЯ.push({строка:i+1, дата:д, год:ч(r[12])||null, сумма:ч(r[1]), краски:ч(r[2]),
+        шелк:ч(r[4]), usd:ч(r[6]), курс:ч(r[7]), отдано:ч(r[9]), налогТаб:ч(r[10]),
+        заметка:(r[11]||'').trim()});
+    });
+    поле('who').textContent = 'движений: ' + ДВИЖЕНИЯ.length;
+    document.getElementById('load').style.display='none';
+    document.getElementById('app').style.display='';
+    отрисовать(); предпросмотр();
+  }catch(e){ шаг('Таблица не прочиталась: ' + e.message); }
+}
+
+/** Отправить строку в таблицу и дождаться, пока она там появится. */
+async function отправить(строка){
+  await fetch(ЗАПИСЬ + '?write=' + encodeURIComponent(JSON.stringify(строка)), {mode:'no-cors'});
+  const было = ДВИЖЕНИЯ.length;
+  for(let п=0; п<10; п++){
+    await new Promise(r=>setTimeout(r, 1200));
+    await загрузка();
+    if(ДВИЖЕНИЯ.length > было) return true;
+  }
+  return false;
+}
+
+поле('f-date').value=new Date().toISOString().slice(0,10);
+загрузка();
+</script>
+</body>
+</html>
